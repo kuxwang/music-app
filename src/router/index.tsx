@@ -1,4 +1,5 @@
 import * as React from "react";
+// import Nav from '../pages/nav'
 import Home from "../pages/home";
 const Login = React.lazy(() => import("../pages/login"));
 
