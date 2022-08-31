@@ -7,6 +7,7 @@ const Login = React.lazy(() => import("../pages/login"));
 const Find = React.lazy(() => import("../pages/find"));
 const Friend = React.lazy(() => import("../pages/friend"));
 const Home = React.lazy(() => import("../pages/home"));
+const Videos = React.lazy(() => import("../pages/videos"));
 
 
 const routes: RouteObject[] = [
@@ -15,7 +16,7 @@ const routes: RouteObject[] = [
     element: <Layout />,
     children: [
       {
-        path: '/home',
+        path: 'home',
         element: <Home />
       },
       {
@@ -25,6 +26,10 @@ const routes: RouteObject[] = [
       {
         path: 'friend',
         element: <Friend />
+      },
+      {
+        path: 'videos',
+        element: <Videos />
       }
     ]
   },

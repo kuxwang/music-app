@@ -1,13 +1,19 @@
 import * as React from "react";
-import { Outlet } from "react-router-dom";
-import Nav from '../../components/nav'
+import { Outlet, Navigate, useLocation } from "react-router-dom";
+import Nav from "components/nav";
 
 interface ILayoutProps {}
 
 const Layout: React.FunctionComponent<ILayoutProps> = (props) => {
+  let location = useLocation();
+  console.log(location);
+  console.log(location.pathname === "/");
   return (
     <>
-      <Nav/>
+      {location.pathname === "/" ? (
+        <Navigate to="/find" replace={true} />
+      ) : null}
+      <Nav />
       <Outlet />
     </>
   );
