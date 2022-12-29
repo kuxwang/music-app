@@ -11,8 +11,7 @@ interface IHomeProps {}
 const Home: React.FC<IHomeProps> = (props) => {
   useEffect(() => {
     api.accountFn().then((res: any) => {
-      console.log('账号信息')
-      console.log(res)
+      
     })
 
   },[]);

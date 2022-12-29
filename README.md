@@ -50,3 +50,11 @@ To learn React, check out the [React documentation](https://reactjs.org/).
 + craco antd ahook tailwindcss  
 + axios 封装
 + react router redux   redux toolkit  
+
+# 文档
++ 网易云API https://binaryify.github.io/NeteaseCloudMusicApi/#/
++ React-vant  https://react-vant-gitee.3lang.dev/
++ ahook https://ahooks.js.org/zh-CN
++ react-router https://reactrouter.com/en/main
++ redux-toolkit  https://redux-toolkit.js.org/
++ tailwinndcss https://www.tailwindcss.cn/
