@@ -1,27 +1,29 @@
+import ScrollView from "components/common/ScrollView";
 import React, { useEffect } from "react";
-// import axios from "../../api";
-import { Button } from 'react-vant';
-interface IHomeProps {}
+import {  homeIcons } from "getInfos/getData";
+import HomeIcon from "components/home-icon";
+import api from "api";
 
+
+// accountFn
+
+interface IHomeProps {}
 const Home: React.FC<IHomeProps> = (props) => {
   useEffect(() => {
-    console.log('run')
-    // axios.get("/banner?type=2").then((res: any) => {
-    //   console.log(res);
-    // });
+    api.accountFn().then((res: any) => {
+      console.log('账号信息')
+      console.log(res)
+    })
+
   },[]);
   return <div>
-    home
-    <div className="grid grid-cols-3 gap-4">
-      <div>1</div>
-      <div>2</div>
-      <div>3</div>
-      <div>4</div>
-      <div>5</div>
-    </div>
-    <Button type='primary'>Primary</Button>
-
-
+    <ScrollView scrollX>
+      {
+        (homeIcons() as IHomeIconProps[]).map((i,index:number) => {
+          return <HomeIcon {...i} key={i.text}></HomeIcon>
+        })
+      }
+    </ScrollView>
   </div>;
 };
 

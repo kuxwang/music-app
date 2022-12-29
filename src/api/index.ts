@@ -73,7 +73,9 @@ import {
   djToplistHours,
   djToplistNewComers,
   djToplistPopulars,
-  djToplistPays
+  djToplistPays,
+  anonimous,
+  account
 } from './config'
 // 请求超时时间
 
@@ -84,6 +86,7 @@ import {
 const apiInstance = axios.create({
   baseURL: 'http://127.0.0.1:4000',
   timeout: 3000, //延迟时间
+  withCredentials:true,
   headers: {
     "content-Type": "application/json"
   }
@@ -212,7 +215,7 @@ const api = {
    * 调用此接口 ,传入手机号码, 可发送验证码
    * @param {number} phone 手机号
    */
-  sendVerifyFn(phone: number) {
+  sendVerifyFn(phone: number | string) {
     return apiInstance.get(sendVerify, {
       params: {
         phone
@@ -238,12 +241,9 @@ const api = {
    * @param {number} phone 手机号
    * @param {String} password 密码
    */
-  phoneLoginFn(phone: any, password: any) {
+  phoneLoginFn(params: any) {
     return apiInstance.get(phoneLogin, {
-      params: {
-        phone: phone || '',
-        password: password || ''
-      }
+      params: params
     })
   },
   /**
@@ -339,6 +339,20 @@ const api = {
         phone,
         password,
         nickname
+      }
+    })
+  },
+  /**
+   * 调用此接口 ,传入手机号码和验证码,密码,昵称, 可注册网易云音乐账号(同时可修改密码)
+   * @param {*} captcha 验证码
+   * @param {*} phone 手机号码
+   * @param {*} password 密码
+   * @param {*} nickname 昵称
+   */
+  anonimousFn() {
+    return apiInstance.get(anonimous, {
+      params: {
+       
       }
     })
   },
@@ -1024,6 +1038,15 @@ const api = {
         t,
         type,
         id
+      }
+    })
+  },
+
+  //account
+  accountFn() {
+    return apiInstance.get(account, {
+      params: {
+       
       }
     })
   }

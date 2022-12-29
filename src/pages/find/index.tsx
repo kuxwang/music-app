@@ -6,8 +6,7 @@ import SectionTitle from "components/section-title";
 import SongsCard from "components/songs-card";
 import api from "api";
 import { findIcons } from "getInfos/getData";
-import { getRandomArrayElements } from 'utils/getRandomArrayElements'
-
+import { getRandomArrayElements } from "utils/getRandomArrayElements";
 
 interface INavItemProps {
   icon: string;
@@ -31,10 +30,10 @@ const Find: React.FC<IFindProps> = (props) => {
     });
 
     api.recSongListFn().then((res: any) => {
-      console.log('推荐');
+      console.log("推荐");
       console.log(res);
-      const list = getRandomArrayElements(res.data.playlists,9)
-      setSongList(list)
+      const list = getRandomArrayElements(res.data.playlists, 9);
+      setSongList(list);
     });
 
     // axios.get("/banner?type=1")
@@ -52,7 +51,9 @@ const Find: React.FC<IFindProps> = (props) => {
       >
         <div className="grid grid-cols-3 gap-x-10  gap-y-15">
           {songlist.length > 0 &&
-            songlist.map((item) => <SongsCard item ={item} key={item.id}></SongsCard>)}
+            songlist.map((item) => (
+              <SongsCard item={item} key={item.id}></SongsCard>
+            ))}
         </div>
       </SectionTitle>
       <SectionTitle
