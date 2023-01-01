@@ -75,7 +75,8 @@ import {
   djToplistPopulars,
   djToplistPays,
   anonimous,
-  account
+  account,
+  refresh
 } from './config'
 // 请求超时时间
 
@@ -1045,6 +1046,13 @@ const api = {
   //account
   accountFn() {
     return apiInstance.get(account, {
+      params: {
+       
+      }
+    })
+  },
+  refreshFn(){
+    return apiInstance.get(refresh, {
       params: {
        
       }

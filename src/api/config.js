@@ -38,6 +38,7 @@ export const logout = api + '/logout' // 退出登录
 export const signIn = api + '/daily_signin' // 签到
 export const register = api + '/register/cellphone' // 注册修改密码
 export const anonimous = api + '/register/anonimous' // 注册修改密码
+export const refresh = api + '/login/refresh' // 注册修改密码
 
 // ===================我的页面相关
 export const userRecord = api + '/user/record' // 用户播放记录

@@ -1,6 +1,10 @@
 import * as React from "react";
 import { Button, Cell, Grid } from "react-vant";
 import { NavigateFunction, useNavigate } from "react-router-dom";
+import { useSelector } from "react-redux";
+
+
+
 
 import {
   ShopO,
@@ -13,6 +17,31 @@ import {
 
 import "./style.less";
 
+
+
+const GetUserBox: React.FC = () => {
+  const navigate:NavigateFunction = useNavigate()
+  
+  const userInfo = useSelector(state => (state as any).user.account)
+
+  if(userInfo){
+    return <div className="p-12">
+      <div>用户名：{userInfo.userName}</div>
+    </div> 
+  }else {
+    return <div className="no-login flex justify-center items-center flex-col">
+    <div className="text-12 text-c6 text-center">
+      <p>登陆网易云音乐</p>
+      <p>手机电脑多端同步，尽享海量高品质音乐</p>
+    </div>
+    <Button round color="#00000066" size="small" plain onClick={() => navigate('/login')}>
+      立即登陆
+    </Button>
+  </div>
+  }
+}
+
+
 interface ILoginMenuProps {}
 
 const LoginMenu: React.FunctionComponent<ILoginMenuProps> = (props) => {
@@ -20,15 +49,10 @@ const LoginMenu: React.FunctionComponent<ILoginMenuProps> = (props) => {
 
   return (
     <div className="login-menu relative">
-      <div className="no-login flex justify-center items-center flex-col">
-        <div className="text-12 text-c6 text-center">
-          <p>登陆网易云音乐</p>
-          <p>手机电脑多端同步，尽享海量高品质音乐</p>
-        </div>
-        <Button round color="#00000066" size="small" plain onClick={() => navigate('/login')}>
-          立即登陆
-        </Button>
-      </div>
+      
+      <GetUserBox></GetUserBox>
+
+
       <Grid border={false}>
         <Grid.Item iconColor="#dd001b" icon={<EnvelopO />} text="我的消息" />
         <Grid.Item iconColor="#dd001b" icon={<FriendsO />} text="我的好友" />
